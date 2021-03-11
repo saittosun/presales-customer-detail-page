@@ -1,8 +1,11 @@
+import { of } from "rxjs";
 import { Customer } from "./customer";
 
 export class Api {
   get customers() {
-    return [...this._customers];
+    return of(
+      [...this._customers]
+    );
   }
 
   private _customers: Customer[] = [

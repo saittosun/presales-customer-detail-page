@@ -19,11 +19,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchfilter = this.fb.control(null);
-    this.searchfilter.valueChanges
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(value => {
-        this.searchService.changeList(value)
-      })
+    // this.searchfilter.valueChanges
+    //   .pipe(takeUntil(this.destroyed$))
+    //   .subscribe(value => {
+    //     this.searchService.changeList(value)
+    //   })
   }
 
   ngOnDestroy(): void {

@@ -7,16 +7,15 @@ import { Customer } from 'src/app/models/customer';
   providedIn: 'root'
 })
 export class ApiService {
-  private _customersSub = new BehaviorSubject<Customer[]>( new Api().customers)
 
   constructor() { }
 
-  get customersSub() {
-    return this._customersSub.asObservable();
-  }
+  // get customersSub() {
+  //   return new Api().customers;
+  // }
 
-  updateCustomer(customers: Customer[]) {
-    this._customersSub.next(customers)
-  }
+  // updateCustomer(customers: Customer[]) {
+  //   this._customersSub.next(customers)
+  // }
 
 }

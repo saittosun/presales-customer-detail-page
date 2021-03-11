@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NewLeadFormComponent } from './new-lead-form.component';
 
@@ -6,7 +6,7 @@ describe('NewLeadFormComponent', () => {
   let component: NewLeadFormComponent;
   let fixture: ComponentFixture<NewLeadFormComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NewLeadFormComponent ]
     })

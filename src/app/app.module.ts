@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
 
+import { reducers } from './leads/lead-state/lead.selectors';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -18,6 +20,9 @@ import { NewCustomerFormComponent } from './customers/new-customer-form/new-cust
 import { InputRefDirective } from './shared/input-ref.directive';
 import { WithValidationInputComponent } from './shared/with-validation-input/with-validation-input.component';
 import { CustomerEditComponent } from './customers/customer-edit/customer-edit.component';
+import { EffectsModule } from '@ngrx/effects';
+import { LeadEffect } from './leads/lead-state/lead.effects';
+import { LeadService } from './leads/lead-state/lead.service';
 
 @NgModule({
   declarations: [
@@ -41,10 +46,12 @@ import { CustomerEditComponent } from './customers/customer-edit/customer-edit.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([LeadEffect]),
     ReactiveFormsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [],
+  providers: [LeadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
