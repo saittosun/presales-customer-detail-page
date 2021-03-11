@@ -5,7 +5,6 @@ export enum LeadActionTypes {
   Load = '[Customer] Load',
   LoadSuccess = '[Customer] Load Success',
   LoadFail = '[Customer] Load Fail',
-  Update = '[Customer] Update'
 }
 
 
@@ -28,16 +27,8 @@ export class LoadFail implements Action {
   }
 }
 
-export class Update implements Action {
-  readonly type = LeadActionTypes.Update;
-
-  constructor(public payload: string) {
-  }
-}
-
 // Union the valid types
 export type LeadActions = Load
   | LoadSuccess
   | LoadFail
-  | Update
 
