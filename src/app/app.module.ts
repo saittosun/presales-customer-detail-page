@@ -1,8 +1,10 @@
+import { CustomerDetailService } from './customers/customer-store/customer-detail.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
 import { reducers } from './leads/lead-state/lead.selectors';
+import { reducer } from './customers/customer-store/customer-detail.selectors';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -23,6 +25,7 @@ import { CustomerEditComponent } from './customers/customer-edit/customer-edit.c
 import { EffectsModule } from '@ngrx/effects';
 import { LeadEffect } from './leads/lead-state/lead.effects';
 import { LeadService } from './leads/lead-state/lead.service';
+import { CustomerDetailEffect } from './customers/customer-store/customer-detail.effects';
 
 @NgModule({
   declarations: [

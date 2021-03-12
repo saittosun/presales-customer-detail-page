@@ -29,29 +29,21 @@ export class LeadEffect {
       })
     )
   )
-// changeList(val: string): void {
-  //   if (val === null || val === '') {
-  //     this.apiService.updateCustomer(this.customers);
-  //     return;
-  //   }
-  //   const customers = this.customers.filter(customer => {
-  //     return customer.customerName.toLowerCase().includes(val.toLowerCase()) || customer.projectName.toLowerCase().includes(val.toLowerCase())
+  // public filterCustomers$ = createEffect(() =>
+  // this.action$.pipe(
+  //   ofType(leadAction.LeadActionTypes.Filter),
+  //   withLatestFrom(this.store.pipe(select(fromCustomer.filterCustomers))),
+  //   switchMap(([, loaded]) => {
+  //     return this.leadService.getCustomers().pipe(map((val) => {
+  //       if (val === null || val === '') {
+  //         this.leadService.updateCustomer();
+  //         return;
+  //       }
+  //       const customers = this.leadService.getCustomers.filter(customer => {
+  //         return customer.customerName.toLowerCase().includes(val.toLowerCase()) || customer.projectName.toLowerCase().includes(val.toLowerCase())
+  //       })
+  //       this.apiService.updateCustomer(customers);
+  //     }))
   //   })
-  //   this.apiService.updateCustomer(customers);
-  // }
-
-  public filterCustomers$ = createEffect(() =>
-    this.action$.pipe(
-      ofType(leadAction.LeadActionTypes.Filter),
-      withLatestFrom(this.store.pipe(select(fromCustomer.filterCustomers))),
-      switchMap(([, customers]) => {
-        return this.leadService.getCustomers().pipe(
-          map((customers) => {
-            return new leadAction.LoadSuccess(customers)
-          }),
-          catchError(err => of(new leadAction.LoadFail(err)))
-        )
-      })
-    )
-  )
+  // ))
 }

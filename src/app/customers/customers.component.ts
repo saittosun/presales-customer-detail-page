@@ -1,6 +1,6 @@
 import { CustomerDetail } from './../models/customer-detail';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { CustomerService } from '../core/services/customer.service';
 
 @Component({
@@ -10,19 +10,14 @@ import { CustomerService } from '../core/services/customer.service';
 })
 export class CustomersComponent implements OnInit, OnDestroy {
 
-  customers: CustomerDetail[] = [];
-  private destroyed$ = new Subject<boolean>();
+  customers: Observable< CustomerDetail[]>;
 
   constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
-   this.customerService.getData()
-
+    this.customerService.getData()
   }
 
-  ngOnDestroy(): void {
-    this.destroyed$.next(true);
-    this.destroyed$.complete();
-  }
+  ngOnDestroy(): void {}
 
 }

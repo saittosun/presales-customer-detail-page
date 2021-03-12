@@ -17,7 +17,7 @@ export class LeadService {
   }
 
   updateCustomer(customers: Customer[]) {
-    this.getCustomers
+    return this.getCustomers()
   }
 
   private handleError(err) {

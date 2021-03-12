@@ -31,7 +31,7 @@ export class CustomerDetailApi {
       customername: 'hamburg',
       addressline1: 'Nova',
       addressline2: 'offer',
-      city: 'hamburg',
+      city: 'brugge',
       country: 'België',
       state: 'oost-vlanderen',
       zip: '111',
