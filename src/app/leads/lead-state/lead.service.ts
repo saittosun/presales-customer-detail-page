@@ -16,6 +16,10 @@ export class LeadService {
     return new Api().customers;
   }
 
+  updateCustomer(customers: Customer[]) {
+    this.getCustomers
+  }
+
   private handleError(err) {
     let errorMessage: string;
     if (err.error instanceof ErrorEvent) {

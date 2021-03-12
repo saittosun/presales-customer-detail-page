@@ -15,11 +15,36 @@ export class LeadEffect {
               private store: Store<any>) {
   }
 
-  public loadProduct$ = createEffect(() =>
+  public loadCustomers$ = createEffect(() =>
    this.action$.pipe(
       ofType(leadAction.LeadActionTypes.Load),
       withLatestFrom(this.store.pipe(select(fromCustomer.getLoaded))),
       switchMap(([, loaded]) => {
+        return this.leadService.getCustomers().pipe(
+          map((customers) => {
+            return new leadAction.LoadSuccess(customers)
+          }),
+          catchError(err => of(new leadAction.LoadFail(err)))
+        )
+      })
+    )
+  )
+// changeList(val: string): void {
+  //   if (val === null || val === '') {
+  //     this.apiService.updateCustomer(this.customers);
+  //     return;
+  //   }
+  //   const customers = this.customers.filter(customer => {
+  //     return customer.customerName.toLowerCase().includes(val.toLowerCase()) || customer.projectName.toLowerCase().includes(val.toLowerCase())
+  //   })
+  //   this.apiService.updateCustomer(customers);
+  // }
+
+  public filterCustomers$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(leadAction.LeadActionTypes.Filter),
+      withLatestFrom(this.store.pipe(select(fromCustomer.filterCustomers))),
+      switchMap(([, customers]) => {
         return this.leadService.getCustomers().pipe(
           map((customers) => {
             return new leadAction.LoadSuccess(customers)

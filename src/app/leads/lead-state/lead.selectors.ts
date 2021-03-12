@@ -10,7 +10,14 @@ export const reducers: ActionReducerMap<State> = {
 
 const getCustomerFeatureState =createFeatureSelector<fromCustomer.LeadState>('leadFeature')
 
-export const getProducts = createSelector(
+export const getCustomers = createSelector(
+  getCustomerFeatureState,
+  state => {
+    return state.customers
+  }
+);
+
+export const filterCustomers = createSelector(
   getCustomerFeatureState,
   state => {
     return state.customers

@@ -1,10 +1,12 @@
 import {Action} from "@ngrx/store";
 import { Customer } from "src/app/models/customer";
 
+
 export enum LeadActionTypes {
   Load = '[Customer] Load',
   LoadSuccess = '[Customer] Load Success',
   LoadFail = '[Customer] Load Fail',
+  Filter = '[Customer] Filter'
 }
 
 
@@ -27,8 +29,15 @@ export class LoadFail implements Action {
   }
 }
 
+export class Filter implements Action {
+  readonly type = LeadActionTypes.Filter;
+
+  constructor() { }
+}
+
 // Union the valid types
 export type LeadActions = Load
   | LoadSuccess
   | LoadFail
+  | Filter
 

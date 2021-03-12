@@ -23,6 +23,14 @@ export function LeadReducer(state = initialState, action: LeadActions): LeadStat
       loaded: true,
       error: ''
     }
+
+    case LeadActionTypes.Filter:
+      return {
+        ...state,
+        customers: [],
+        loaded: true,
+        error: ''
+      }
       default:
         return state
     }

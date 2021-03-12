@@ -73,7 +73,7 @@ export class NewCustomerFormComponent implements OnInit {
     };
     this.save(this.leadForm.value);
     const id = this.customerService.getData().id;
-    this.router.navigate(['../', id], {relativeTo: this.route});
+    this.router.navigate(['../customer-detail', id], {relativeTo: this.route});
     this.leadForm.reset()
     this.submitted = false;
   }

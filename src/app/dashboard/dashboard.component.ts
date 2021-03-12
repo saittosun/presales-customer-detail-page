@@ -55,9 +55,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.customers = this.store.allLeads$;
   }
 
-  onLeadDetail() {
-    this.router.navigate(['/new/customer-detail'])
-  }
+  // onLeadDetail() {
+  //   this.router.navigate(['/new/customer-detail'])
+  // }
 
   ngOnDestroy(): void {}
 

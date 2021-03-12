@@ -1,4 +1,4 @@
-import { getProducts } from './lead.selectors';
+import { getCustomers } from './lead.selectors';
 import { Load } from './lead.actions';
 import { select } from '@ngrx/store';
 import { Injectable } from '@angular/core';
@@ -12,7 +12,7 @@ import * as fromApp from "./lead.reducers";
 })
 
 export class LeadFacade {
-  allLeads$: Observable<Customer[]> = this.store.pipe(select(getProducts))
+  allLeads$: Observable<Customer[]> = this.store.pipe(select(getCustomers))
 
   constructor(private store: Store<fromApp.LeadState>) { }
 
