@@ -1,32 +1,33 @@
 import {createFeatureSelector, createSelector, ActionReducerMap} from "@ngrx/store";
-import * as fromCustomer from './lead.reducers'
+import * as fromCustomer from './lead.reducers';
+import * as fromApp from '../../store/app.reducer'
 
 export interface State {
-  leadFeature: fromCustomer.LeadState;
+  leadFeature: fromApp.AppState;
 }
-export const reducers: ActionReducerMap<State> = {
-  leadFeature: fromCustomer.LeadReducer,
-};
+// export const reducers: ActionReducerMap<State> = {
+//   leadFeature: fromCustomer.LeadReducer,
+// };
 
-const getCustomerFeatureState =createFeatureSelector<fromCustomer.LeadState>('leadFeature')
+const getCustomerFeatureState =createFeatureSelector<fromApp.AppState>('leadFeature')
 
 export const getCustomers = createSelector(
   getCustomerFeatureState,
   state => {
-    return state.customers
+    return state.reducers.customers
   }
 );
 
 export const filterCustomers = createSelector(
   getCustomerFeatureState,
   state => {
-    return state.customers
+    return state.reducers.customers
   }
 );
 
 export const getLoaded = createSelector(
   getCustomerFeatureState,
   state => {
-    return state.loaded
+    return state.reducers.loaded
   }
 );

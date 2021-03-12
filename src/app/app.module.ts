@@ -1,9 +1,10 @@
+import { appReducer } from './store/app.reducer';
 import { CustomerDetailService } from './customers/customer-store/customer-detail.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
-import { reducers } from './leads/lead-state/lead.selectors';
+// import { reducers } from './leads/lead-state/lead.selectors';
 import { reducer } from './customers/customer-store/customer-detail.selectors';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { LeadEffect } from './leads/lead-state/lead.effects';
 import { LeadService } from './leads/lead-state/lead.service';
 import { CustomerDetailEffect } from './customers/customer-store/customer-detail.effects';
+import * as fromApp from '../app/store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -49,12 +51,12 @@ import { CustomerDetailEffect } from './customers/customer-store/customer-detail
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([LeadEffect]),
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([LeadEffect, CustomerDetailEffect]),
     ReactiveFormsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [LeadService],
+  providers: [LeadService, CustomerDetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

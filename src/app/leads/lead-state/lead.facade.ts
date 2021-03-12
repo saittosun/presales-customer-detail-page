@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/models/customer';
-import * as fromApp from "./lead.reducers";
+import * as fromApp from "../../../app/store/app.reducer";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ import * as fromApp from "./lead.reducers";
 export class LeadFacade {
   allLeads$: Observable<Customer[]> = this.store.pipe(select(getCustomers))
 
-  constructor(private store: Store<fromApp.LeadState>) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   loadCustomers() {
     this.store.dispatch(new Load())

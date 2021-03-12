@@ -16,7 +16,7 @@ const initialState: LeadState = {
 };
 
 
-export function LeadReducer(state = initialState, action: LeadActions): LeadState {
+export function LeadReducer(state: LeadState = initialState, action: LeadActions): LeadState {
   switch (action.type) {
   case LeadActionTypes.LoadSuccess:
     return {

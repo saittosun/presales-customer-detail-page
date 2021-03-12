@@ -4,7 +4,7 @@ import { select } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as fromApp from "./customer-detail.reducers";
+import * as fromApp from "../../../app/store/app.reducer";
 import { CustomerDetail } from 'src/app/models/customer-detail';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class CustomerDetailFacade {
 
   // allCustomers$: Observable<{customers: CustomerDetail[]}>;
 
-  constructor(private store: Store<fromApp.CustomerDetailState>) { }
+  constructor(private store: Store<fromApp.AppState>) { }
   // constructor(private store: Store<{customerDetail: {customers: CustomerDetail[]}}>) { }
 
   loadCustomers() {
