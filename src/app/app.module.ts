@@ -1,3 +1,5 @@
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './store/app.reducer';
 import { CustomerDetailService } from './customers/customer-store/customer-detail.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -53,6 +55,7 @@ import * as fromApp from '../app/store/app.reducer';
     FormsModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([LeadEffect, CustomerDetailEffect]),
+    StoreDevtoolsModule.instrument({logOnly: environment.production}),
     ReactiveFormsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
