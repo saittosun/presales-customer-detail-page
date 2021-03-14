@@ -1,13 +1,10 @@
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { appReducer } from './store/app.reducer';
-import { CustomerDetailService } from './customers/customer-store/customer-detail.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
-// import { reducers } from './leads/lead-state/lead.selectors';
-import { reducer } from './customers/customer-store/customer-detail.selectors';
+import { reducers } from './leads/lead-state/lead.selectors';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -28,8 +25,9 @@ import { CustomerEditComponent } from './customers/customer-edit/customer-edit.c
 import { EffectsModule } from '@ngrx/effects';
 import { LeadEffect } from './leads/lead-state/lead.effects';
 import { LeadService } from './leads/lead-state/lead.service';
-import { CustomerDetailEffect } from './customers/customer-store/customer-detail.effects';
-import * as fromApp from '../app/store/app.reducer';
+import { ConnectFormDirective } from './shared/connect-form.directive';
+import { SearchDirective } from './shared/search.directive';
+import { SearchPipe } from './shared/search.pipe';
 
 @NgModule({
   declarations: [
@@ -48,18 +46,21 @@ import * as fromApp from '../app/store/app.reducer';
     InputRefDirective,
     WithValidationInputComponent,
     CustomerEditComponent,
+    ConnectFormDirective,
+    SearchDirective,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([LeadEffect, CustomerDetailEffect]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([LeadEffect]),
     StoreDevtoolsModule.instrument({logOnly: environment.production}),
     ReactiveFormsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [LeadService, CustomerDetailService],
+  providers: [LeadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
-import { CustomerDetail } from 'src/app/models/customer-detail';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  private customerDetail: CustomerDetail
+  // private customerDetail: CustomerDetail
 
-  setData(value){
-    this.customerDetail = value;
-    this.customerDetail.id = Date.now()
-  }
+  // setData(value){
+  //   this.customerDetail = value;
+  //   this.customerDetail.id = Date.now()
+  // }
 
-  getData(){
-    return {...this.customerDetail}
-  }
+  // getData(){
+  //   return {...this.customerDetail}
+  // }
 
   constructor() { }
 }

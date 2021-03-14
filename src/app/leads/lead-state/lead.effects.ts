@@ -29,21 +29,4 @@ export class LeadEffect {
       })
     )
   )
-  // public filterCustomers$ = createEffect(() =>
-  // this.action$.pipe(
-  //   ofType(leadAction.LeadActionTypes.Filter),
-  //   withLatestFrom(this.store.pipe(select(fromCustomer.filterCustomers))),
-  //   switchMap(([, loaded]) => {
-  //     return this.leadService.getCustomers().pipe(map((val) => {
-  //       if (val === null || val === '') {
-  //         this.leadService.updateCustomer();
-  //         return;
-  //       }
-  //       const customers = this.leadService.getCustomers.filter(customer => {
-  //         return customer.customerName.toLowerCase().includes(val.toLowerCase()) || customer.projectName.toLowerCase().includes(val.toLowerCase())
-  //       })
-  //       this.apiService.updateCustomer(customers);
-  //     }))
-  //   })
-  // ))
 }

@@ -1,3 +1,4 @@
+import { LeadFacade } from 'src/app/leads/lead-state/lead.facade';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -25,14 +26,35 @@ export class NewCustomerFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
-              private customerService: CustomerService) {}
+              private store: LeadFacade) {}
 
   ngOnInit(): void {
     this.createForm();
   }
 
   save(val) {
-    this.customerService.setData(val);
+    const customer: Customer = {
+      id: Date.now(),
+      customerName: val.customerName,
+      projectName: val.projectName,
+      status: null,
+      date: null,
+      firstName: val.firstName,
+      lastName: val.lastName,
+      email: val.email,
+      phonenumber: val.phonenumber,
+      vat: val.vat,
+      address: {
+        addressline: val.addressline1,
+        city: val.city,
+        state: val.state,
+        country: val.country,
+        zip: val.zip
+      },
+
+    }
+    this.store.saveCustomer(customer);
+    return customer.id;
   }
 
   private createForm() {
@@ -71,8 +93,8 @@ export class NewCustomerFormComponent implements OnInit {
       alert('You must fill the required fields!')
       return;
     };
-    this.save(this.leadForm.value);
-    const id = this.customerService.getData().id;
+    const id =  this.save(this.leadForm.value);
+    console.log(this.leadForm.value);
     this.router.navigate(['../customer-detail', id], {relativeTo: this.route});
     this.leadForm.reset()
     this.submitted = false;

@@ -1,10 +1,8 @@
 import { Customer } from './../../models/customer';
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/internal/Observable";
-import {catchError, map} from "rxjs/operators";
 
 import {throwError} from "rxjs/internal/observable/throwError";
-import { BehaviorSubject } from 'rxjs';
 import { Api } from 'src/app/models/api';
 
 @Injectable()
@@ -14,10 +12,6 @@ export class LeadService {
 
   getCustomers(): Observable<Customer[]> {
     return new Api().customers;
-  }
-
-  updateCustomer(customers: Customer[]) {
-    return this.getCustomers()
   }
 
   private handleError(err) {

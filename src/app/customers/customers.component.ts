@@ -1,7 +1,5 @@
-import { CustomerDetail } from './../models/customer-detail';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { CustomerService } from '../core/services/customer.service';
 
 @Component({
   selector: 'app-customers',
@@ -10,12 +8,12 @@ import { CustomerService } from '../core/services/customer.service';
 })
 export class CustomersComponent implements OnInit, OnDestroy {
 
-  customers: Observable< CustomerDetail[]>;
 
-  constructor(private customerService: CustomerService) { }
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.customerService.getData()
+
   }
 
   ngOnDestroy(): void {}

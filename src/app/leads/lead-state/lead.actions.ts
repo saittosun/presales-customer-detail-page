@@ -6,8 +6,7 @@ export enum LeadActionTypes {
   Load = '[Customer] Load',
   LoadSuccess = '[Customer] Load Success',
   LoadFail = '[Customer] Load Fail',
-  Filter = '[Customer] Filter',
-  FilterDone = '[Customer] FilterDone'
+  SaveCustomer = '[CustomerNewForm] Save Customer',
 }
 
 
@@ -30,22 +29,15 @@ export class LoadFail implements Action {
   }
 }
 
-export class Filter implements Action {
-  readonly type = LeadActionTypes.Filter;
+export class SaveCustomer implements Action {
+  readonly type = LeadActionTypes.SaveCustomer;
 
-  constructor(public payload: string) { }
+  constructor(public payload: Customer) {
+  }
 }
 
-export class FilterDone implements Action {
-  readonly type = LeadActionTypes.FilterDone;
-
-  constructor(public payload: {results: Customer[]}) { }
-}
-
-// Union the valid types
 export type LeadActions = Load
   | LoadSuccess
   | LoadFail
-  | Filter
-  | FilterDone
+  | SaveCustomer
 
