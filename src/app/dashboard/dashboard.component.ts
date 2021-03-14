@@ -1,4 +1,4 @@
-import { filter, take, takeUntil } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Customer } from '../models/customer';
 import { LeadFacade } from '../leads/lead-store/lead.facade';
