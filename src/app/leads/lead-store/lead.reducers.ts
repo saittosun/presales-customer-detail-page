@@ -1,4 +1,4 @@
-import { Customer } from './../../models/customer';
+import { Customer } from '../../models/customer';
 import { LeadActions, LeadActionTypes } from "./lead.actions";
 
 export interface LeadState {

@@ -1,4 +1,4 @@
-import { Customer } from './../../models/customer';
+import { Customer } from '../../models/customer';
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/internal/Observable";
 

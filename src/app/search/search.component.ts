@@ -7,57 +7,24 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: SearchComponent,
-      multi: true
-    }
-  ]
+  styleUrls: ['./search.component.scss']
 })
 
 export class SearchComponent implements OnInit, OnDestroy {
   searchCriteria = '';
   @Output() searchcriteria = new EventEmitter<String>();
+
+  constructor() { }
+
   searchThis(event) {
     console.log(event);
     this.searchcriteria.emit(event);
   }
-  // isDisabled: boolean = false;
-  // searchfilter = new FormControl(null);
 
-  // private onChange: (value: string) => void;
-  // private destroyed$ = new Subject<boolean>();
+  ngOnInit(): void {}
 
-  constructor() { }
+  ngOnDestroy(): void { }
 
-  ngOnInit(): void {
-    // this.searchfilter.valueChanges
-    // .pipe(takeUntil(this.destroyed$))
-    // .subscribe(value => {
-    //   this.onChange(value);
-    // });
-  }
-
-  ngOnDestroy(): void {
-    // this.destroyed$.next(true);
-    // this.destroyed$.complete();
-  }
-
-  // public writeValue(value: string): void {
-  //   this.searchfilter.setValue(value, { emitEvent: false });
-  // }
-
-  // public registerOnChange(onChange: (value: string) => void) {
-  //   this.onChange = onChange;
-  // }
-
-  // public registerOnTouched() {}
-
-  // public setDisabledState(isDisabled: boolean) {
-  //   this.isDisabled = isDisabled;
-  // }
 }
 
 

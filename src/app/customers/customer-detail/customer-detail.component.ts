@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { map, take } from 'rxjs/operators';
-import { LeadFacade } from 'src/app/leads/lead-state/lead.facade';
+import { LeadFacade } from 'src/app/leads/lead-store/lead.facade';
 import { Customer } from 'src/app/models/customer';
 
 @Component({

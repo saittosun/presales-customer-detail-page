@@ -8,13 +8,9 @@ import { Subject, Observable } from 'rxjs';
 })
 export class CustomersComponent implements OnInit, OnDestroy {
 
-
-
   constructor() { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {}
 

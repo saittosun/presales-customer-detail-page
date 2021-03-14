@@ -11,11 +11,7 @@ export class CustomerEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      this.id = params.id;
-    })
-  }
+  ngOnInit(): void {  }
 
 }
 

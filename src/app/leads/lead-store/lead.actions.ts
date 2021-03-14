@@ -9,7 +9,6 @@ export enum LeadActionTypes {
   SaveCustomer = '[CustomerNewForm] Save Customer',
 }
 
-
 export class Load implements Action {
   readonly type = LeadActionTypes.Load;
 
