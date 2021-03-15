@@ -5,8 +5,8 @@ import { Customer } from 'src/app/models/customer';
 import { Country } from 'src/app/models/country';
 import { Countries } from 'src/app/models/countries';
 import { Subject } from 'rxjs';
-import { LeadFacade } from '../../leads/lead-store/lead.facade';
 import { take } from 'rxjs/operators';
+import { CustomerFacade } from 'src/app/app-store/customer-state/customer.facade';
 
 @Component({
   selector: 'app-customer-edit',
@@ -26,13 +26,13 @@ export class CustomerEditComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private store: LeadFacade) {}
+    private store: CustomerFacade) {}
 
 
     ngOnInit(): void {
-      this.store.loadCustomers();
-      this.store.allLeads$.pipe(take(1)).subscribe(customers => this.customers = customers);
-      console.log(this.customers);
+      this.store.getCustomers();
+      // this.store.allLeads$.pipe(take(1)).subscribe(customers => this.customers = customers);
+      // console.log(this.customers);
       this.createForm();
     }
 
@@ -57,8 +57,8 @@ export class CustomerEditComponent implements OnInit {
       },
 
     }
-    this.store.saveCustomer(customer);
-    console.log(this.store.loadCustomers());
+    // this.store.saveCustomer(customer);
+    // console.log(this.store.loadCustomers());
     return customer.id;
   }
 

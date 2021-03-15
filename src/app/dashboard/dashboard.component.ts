@@ -1,8 +1,8 @@
+import { CustomerFacade } from './../app-store/customer-state/customer.facade';
 import { Observable } from 'rxjs/internal/Observable';
 import { take } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Customer } from '../models/customer';
-import { LeadFacade } from '../leads/lead-store/lead.facade';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,15 +10,16 @@ import { LeadFacade } from '../leads/lead-store/lead.facade';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  customers: Observable<Customer[]> ;
+  customers: Customer[];
   filter: string = '';
 
-  constructor(private store: LeadFacade) { }
+  constructor(private store: CustomerFacade) { }
 
   ngOnInit(): void {
-    this.store.loadCustomers();
-    this.customers = this.store.allLeads$;
-
+    this.store.getCustomers();
+    console.log(this.customers);
+    // this.store.loadCustomers();
+    // this.customers = this.store.allLeads$;
   }
 
   searchThis(val: string): void {

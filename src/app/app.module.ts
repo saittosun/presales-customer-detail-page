@@ -1,10 +1,11 @@
+import { CustomerEffects } from './app-store/customer-state/customer.effects';
+import { CustomerFacade } from './app-store/customer-state/customer.facade';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
-import { reducers } from './leads/lead-store/lead.selectors';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -23,11 +24,10 @@ import { InputRefDirective } from './shared/input-ref.directive';
 import { WithValidationInputComponent } from './shared/with-validation-input/with-validation-input.component';
 import { CustomerEditComponent } from './customers/customer-edit/customer-edit.component';
 import { EffectsModule } from '@ngrx/effects';
-import { LeadEffect } from './leads/lead-store/lead.effects';
-import { LeadService } from './leads/lead-store/lead.service';
 import { ConnectFormDirective } from './shared/connect-form.directive';
 import { SearchDirective } from './shared/search.directive';
 import { SearchPipe } from './shared/search.pipe';
+import { CustomerService } from './app-store/customer-state/customer.service';
 
 @NgModule({
   declarations: [
@@ -54,13 +54,15 @@ import { SearchPipe } from './shared/search.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([LeadEffect]),
+    // StoreModule.forRoot(reducers),
+    // EffectsModule.forRoot([LeadEffect]),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({logOnly: environment.production}),
     ReactiveFormsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [LeadService],
+  providers: [CustomerFacade, CustomerService, CustomerEffects],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,3 @@
-import { LeadFacade } from 'src/app/leads/lead-store/lead.facade';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -7,6 +6,7 @@ import { Countries } from 'src/app/models/countries';
 import { Country } from 'src/app/models/country';
 import { Customer } from 'src/app/models/customer';
 import { take } from 'rxjs/operators';
+import { CustomerFacade } from 'src/app/app-store/customer-state/customer.facade';
 
 @Component({
   selector: 'app-new-customer-form',
@@ -26,7 +26,7 @@ export class NewCustomerFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
-              private store: LeadFacade) {}
+              private store: CustomerFacade) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -53,7 +53,7 @@ export class NewCustomerFormComponent implements OnInit {
       },
 
     }
-    this.store.saveCustomer(customer);
+    // this.store.saveCustomer(customer);
     return customer.id;
   }
 
