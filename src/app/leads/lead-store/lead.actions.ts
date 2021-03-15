@@ -7,6 +7,7 @@ export enum LeadActionTypes {
   LoadSuccess = '[Customer] Load Success',
   LoadFail = '[Customer] Load Fail',
   SaveCustomer = '[CustomerNewForm] Save Customer',
+  SearchLead = '[Dashboard] Search Lead'
 }
 
 export class Load implements Action {
@@ -35,8 +36,15 @@ export class SaveCustomer implements Action {
   }
 }
 
+export class SearchLead implements Action {
+  readonly type = LeadActionTypes.SearchLead;
+
+  constructor(public payload: string) {}
+}
+
 export type LeadActions = Load
   | LoadSuccess
   | LoadFail
   | SaveCustomer
+  | SearchLead
 

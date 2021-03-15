@@ -14,6 +14,13 @@ export class LeadService {
     return new Api().customers;
   }
 
+  getSearchLead(val: string): Observable<Customer[]> {
+    if (val === null || val === '') {
+     return
+    }
+    //
+  }
+
   private handleError(err) {
     let errorMessage: string;
     if (err.error instanceof ErrorEvent) {

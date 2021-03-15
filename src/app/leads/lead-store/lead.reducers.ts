@@ -5,12 +5,14 @@ export interface LeadState {
   customers: Customer[],
   loaded: boolean;
   error: string,
+  searchText: string,
 }
 
 const initialState: LeadState = {
   customers: [],
   loaded: false,
   error: '',
+  searchText: ''
 };
 
 
@@ -35,6 +37,14 @@ export function LeadReducer(state: LeadState = initialState, action: LeadActions
         ...state,
         customers: state.customers.concat(action.payload),
         loaded: true,
+        error: ''
+      }
+    case LeadActionTypes.SearchLead:
+      return {
+        ...state,
+        customers: state.customers,
+        loaded: true,
+        searchText: action.payload,
         error: ''
       }
       default:

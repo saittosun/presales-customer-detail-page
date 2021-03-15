@@ -1,5 +1,5 @@
 import { getCustomers } from './lead.selectors';
-import { Load, SaveCustomer } from './lead.actions';
+import { Load, SaveCustomer, SearchLead } from './lead.actions';
 import { select } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -22,6 +22,10 @@ export class LeadFacade {
 
   saveCustomer(customer: Customer) {
     this.store.dispatch(new SaveCustomer(customer))
+  }
+
+  searchLead(value) {
+    this.store.dispatch(new SearchLead(value))
   }
 
 }

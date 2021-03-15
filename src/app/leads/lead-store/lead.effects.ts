@@ -29,4 +29,19 @@ export class LeadEffect {
       })
     )
   )
-}
+
+  public searchLeads$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(leadAction.LeadActionTypes.SearchLead),
+      withLatestFrom(this.store.pipe(select(fromCustomer.getSearchLead))),
+      switchMap(([val]) => {
+        console.log(val);
+        return this.leadService.getSearchLead(val).pipe(
+          map((customers) => {
+            return new leadAction.LoadSuccess(customers)
+          }),
+          catchError(err => of(new leadAction.LoadFail(err)))
+          )
+      })
+    ))
+  }

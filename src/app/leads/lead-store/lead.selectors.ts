@@ -30,3 +30,10 @@ export const getSaveCustomer = createSelector(
     return state.customers
   }
 );
+
+export const getSearchLead = createSelector(
+  getCustomerFeatureState,
+  state => {
+    return state.customers
+  }
+)

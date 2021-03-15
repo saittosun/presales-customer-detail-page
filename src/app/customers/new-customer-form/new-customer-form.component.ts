@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { Countries } from 'src/app/models/countries';
 import { Country } from 'src/app/models/country';
 import { Customer } from 'src/app/models/customer';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-customer-form',
@@ -96,6 +97,9 @@ export class NewCustomerFormComponent implements OnInit {
     console.log(this.leadForm.value);
     this.router.navigate(['../customer-detail', id], {relativeTo: this.route});
     this.leadForm.reset()
+    // this.store.loadCustomers();
+    // this.store.allLeads$.pipe(take(1)).subscribe(customers => this.customers = customers);
+    // console.log(this.customers);
     this.submitted = false;
   }
 

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/internal/Observable';
 import { take } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Customer } from '../models/customer';
@@ -9,25 +10,19 @@ import { LeadFacade } from '../leads/lead-store/lead.facade';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  customers: Customer[];
-  filteredCustomers: Customer[];
+  customers: Observable<Customer[]> ;
+  filter: string = '';
 
   constructor(private store: LeadFacade) { }
 
   ngOnInit(): void {
     this.store.loadCustomers();
-    this.store.allLeads$.pipe(take(1)).subscribe(customers => this.customers = customers);
-    this.filteredCustomers = [...this.customers]
+    this.customers = this.store.allLeads$;
+
   }
 
   searchThis(val: string): void {
-    if (val === null || val === '') {
-      this.filteredCustomers = [...this.customers]
-      return;
-    }
-    this.filteredCustomers = [...this.customers.filter(customer => {
-      return customer.customerName.toLowerCase().includes(val.toLowerCase()) || customer.projectName.toLowerCase().includes(val.toLowerCase())
-    })]
+    this.filter = val;
   }
 
   ngOnDestroy(): void {}

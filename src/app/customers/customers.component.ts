@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { LeadFacade } from '../leads/lead-store/lead.facade';
+import { Customer } from '../models/customer';
 
 @Component({
   selector: 'app-customers',
@@ -7,10 +10,14 @@ import { Subject, Observable } from 'rxjs';
   styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent implements OnInit, OnDestroy {
+  customers: Customer[];
 
-  constructor() { }
+  constructor(private store: LeadFacade) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.loadCustomers();
+    this.store.allLeads$.pipe(take(1)).subscribe(customers => this.customers = customers);
+  }
 
   ngOnDestroy(): void {}
 
